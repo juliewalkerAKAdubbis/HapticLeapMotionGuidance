@@ -42,8 +42,8 @@ void SampleListener::updateFrameInfo(const Controller& controller, Vector &index
 		Finger index = fingers[1];
 
 
-		indexPos = index.stabilizedTipPosition();
-		thumbPos = thumb.stabilizedTipPosition();
+		indexPos = index.tipPosition();
+		thumbPos = thumb.tipPosition();
 
 		Leap::Bone::Type proximal = static_cast<Leap::Bone::Type>(1);
 		Bone indexProximal = index.bone(proximal);
