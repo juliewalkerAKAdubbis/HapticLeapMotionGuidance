@@ -42,28 +42,3 @@ void Loop(int value)
 }
 
 
-//void keyboard(unsigned char key, int x, int y)
-//{
-//	/* this is the keyboard event handler
-//	the x and y parameters are the mouse
-//	coordintes when the key was struck */
-//	switch (key)
-//	{
-//	case 'u':
-//	case 'U':
-//		glRotatef(3.0, 1.0, 0.0, 0.0); /* rotate up */
-//		break;
-//	case 'd':
-//	case 'D':
-//		glRotatef(-3.0, 1.0, 0.0, 0.0); /* rotate down */
-//		break;
-//	case 'l':
-//	case 'L':
-//		glRotatef(3.0, 0.0, 1.0, 0.0); /* rotate left */
-//		break;
-//	case 'r':
-//	case 'R':
-//		glRotatef(-3.0, 0.0, 1.0, 0.0); /* rotate right */
-//	}
-//	glutPostRedisplay();
-//}

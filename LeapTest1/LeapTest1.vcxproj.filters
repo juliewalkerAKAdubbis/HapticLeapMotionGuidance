@@ -21,9 +21,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SerialClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SampleListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -36,9 +33,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LeapTest1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Serial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SampleListener.cpp">
