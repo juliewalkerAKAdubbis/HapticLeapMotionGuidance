@@ -72,27 +72,27 @@ void drawFingers(int scaleFactor, float* handOffset, Leap::Vector indexPos, Leap
 	glLoadIdentity();
 	glTranslatef(handOffset[0], handOffset[1], handOffset[2]);
 	glBegin(GL_LINE_STRIP);
-	glVertex3f(-indexPos[0] / scaleFactor, indexPos[1] / scaleFactor, indexPos[2] / scaleFactor);
-	glVertex3f(-centerPos[0] / scaleFactor, centerPos[1] / scaleFactor, centerPos[2] / scaleFactor);
-	glVertex3f(-thumbPos[0] / scaleFactor, thumbPos[1] / scaleFactor, thumbPos[2] / scaleFactor);
+	glVertex3f(indexPos[0] / scaleFactor, indexPos[1] / scaleFactor, indexPos[2] / scaleFactor);
+	glVertex3f(centerPos[0] / scaleFactor, centerPos[1] / scaleFactor, centerPos[2] / scaleFactor);
+	glVertex3f(thumbPos[0] / scaleFactor, thumbPos[1] / scaleFactor, thumbPos[2] / scaleFactor);
 	glEnd();
 
 	// Draw end points
 	glLoadIdentity();
 	glTranslatef(handOffset[0], handOffset[1], handOffset[2]);
-	glTranslatef(-centerPos[0] / scaleFactor, centerPos[1] / scaleFactor, centerPos[2] / scaleFactor);
+	glTranslatef(centerPos[0] / scaleFactor, centerPos[1] / scaleFactor, centerPos[2] / scaleFactor);
 	glutSolidSphere(0.25f, 10, 10);
 
 	glLoadIdentity();
 	glColor3f(0.0f, 0.0f, 1.0f);
 	glTranslatef(handOffset[0], handOffset[1], handOffset[2]);
-	glTranslatef(-indexPos[0] / scaleFactor, indexPos[1] / scaleFactor, indexPos[2] / scaleFactor);
+	glTranslatef(indexPos[0] / scaleFactor, indexPos[1] / scaleFactor, indexPos[2] / scaleFactor);
 	glutSolidSphere(0.15f, 8, 8);
 
 	glLoadIdentity();
 	glColor3f(0.0f, 1.0f, 0.0f);
 	glTranslatef(handOffset[0], handOffset[1], handOffset[2]);
-	glTranslatef(-thumbPos[0] / scaleFactor, thumbPos[1] / scaleFactor, thumbPos[2] / scaleFactor);
+	glTranslatef(thumbPos[0] / scaleFactor, thumbPos[1] / scaleFactor, thumbPos[2] / scaleFactor);
 	glutSolidSphere(0.15f, 8, 8);
 
 
@@ -102,7 +102,7 @@ void drawFingers(int scaleFactor, float* handOffset, Leap::Vector indexPos, Leap
 void drawTrajectory(void) {
 	glColor3f(0.0f, 0.25f, 0.5f);
 
-	float basicOffset[3] = { 0.0f, 3.0f, -30.0f };
+	float basicOffset[3] = { 0.0f, 3.0f, -20.0f };
 	int numPoints = 36;
 	float t;
 
