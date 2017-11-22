@@ -51,7 +51,7 @@ void drawFloor(void) {
 	/* draw the floor */
 
 	glLoadIdentity();
-	glTranslatef(0.0f, -5.0f, 0.0f);
+	glTranslatef(0.0f, -10.0f, 0.0f);
 
 	glBegin(GL_QUADS);
 	glColor3f(0.2f, 0.7f, 0.2f);
@@ -99,7 +99,7 @@ void drawFingers(int scaleFactor, float* handOffset, Leap::Vector indexPos, Leap
 }
 
 
-void drawTrajectory(int step) {
+void drawFigure8(int step) {
 
 	float basicOffset[3] = { 0.0f, 3.0f, -20.0f };
 	int numPoints = 16;
@@ -121,5 +121,15 @@ void drawTrajectory(int step) {
 		glutSolidSphere(0.25f, 10, 10);
 
 	}
+
+}
+
+void drawTarget(Leap::Vector target, float* basicOffset) {
+
+
+	glLoadIdentity();
+	glTranslatef(basicOffset[0], basicOffset[1], basicOffset[2]);
+	glTranslatef(target[0], target[1], target[2]);
+	glutSolidSphere(0.25f, 10, 10);
 
 }

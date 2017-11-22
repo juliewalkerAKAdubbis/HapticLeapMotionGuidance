@@ -4,4 +4,5 @@
 using namespace Leap;
 
 // Prototypes
-char  decideHapticCue(int &step);
+char  figure8cues(int &step);
+char decideHapticCue(Leap::Vector target, Leap::Vector currentPos, float *handOffset, float *basicOffset);
