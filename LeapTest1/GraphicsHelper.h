@@ -10,4 +10,4 @@ void Loop(int value);
 void keyboard(unsigned char key, int x, int y);
 void drawFloor(void); 
 void drawFingers(int scaleFactor, float* handOffset, Leap::Vector indexPos, Leap::Vector thumbPos, Leap::Vector centerPos);
-void drawTrajectory(void);
+void drawTrajectory(int step);

@@ -99,19 +99,27 @@ void drawFingers(int scaleFactor, float* handOffset, Leap::Vector indexPos, Leap
 }
 
 
-void drawTrajectory(void) {
-	glColor3f(0.0f, 0.25f, 0.5f);
+void drawTrajectory(int step) {
 
 	float basicOffset[3] = { 0.0f, 3.0f, -20.0f };
-	int numPoints = 36;
+	int numPoints = 16;
 	float t;
 
 	for (int i = 0; i < numPoints; i++) {
-		t = 2 * PI / numPoints * i;
+		t = 2 * PI / numPoints * i + PI/2;
 		glLoadIdentity();
 		glTranslatef(basicOffset[0], basicOffset[1], basicOffset[2]);
-		glTranslatef(5*cos(t), 3*sin(2*t), 0);
+		glTranslatef(5*cos(t), -3*sin(2*t), 0);
+
+		if (i == step){
+			glColor3f(0.25f, 0.0f, 0.5f);
+		}
+		else {
+			glColor3f(0.0f, 0.25f, 0.5f);
+		}
+
 		glutSolidSphere(0.25f, 10, 10);
+
 	}
 
 }

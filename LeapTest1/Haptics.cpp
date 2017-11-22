@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-char decideHapticCue(int &step, const int nSteps) {
+char decideHapticCue(int &step) {
 	/* Use list of trajectory cues and current hand position from the Leap to decide the
 	current haptic cue to provide to the user */
 
@@ -10,14 +10,13 @@ char decideHapticCue(int &step, const int nSteps) {
 
 	char cueSeries[nPoints] = { 'j','i','l','m','l','i','j','i','l','i','j','m','j','i','l','i' };
 
-	if (step < waitPeriod || center == true || step >= nPoints) {
-		return 'm';
+	if ( center == true || step >= (nPoints+ waitPeriod) ) {
 		center = false;
+		return 'k';
 	}
 	else {
-
-		return cueSeries[step - waitPeriod];
-		step++;
+		++step;
 		center = true;		// center after each command
+		return cueSeries[step-1];
 	}
 }

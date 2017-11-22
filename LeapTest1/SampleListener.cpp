@@ -1,6 +1,8 @@
 #include "stdafx.h"
 //#include "SampleListener.h"
 
+using namespace Leap;
+
 const std::string fingerNames[] = { "Thumb", "Index", "Middle", "Ring", "Pinky" };
 const std::string boneNames[] = { "Metacarpal", "Proximal", "Middle", "Distal" };
 const std::string stateNames[] = { "STATE_INVALID", "STATE_START", "STATE_UPDATE", "STATE_END" };
@@ -29,12 +31,13 @@ void SampleListener::onExit(const Controller& controller) {
 void SampleListener::updateFrameInfo(const Controller& controller, Vector &indexPos, Vector &thumbPos, Vector &centerPos) {
 	const Frame frame = controller.frame();
 	HandList hands = frame.hands();
+	Leap::Hand hand = hands[0];
 
-	for (HandList::const_iterator hl = hands.begin(); hl != hands.end(); ++hl) {
+	//for (HandList::const_iterator hl = hands.begin(); hl != hands.end(); ++hl) {
 		// Get the first hand
-		const Hand hand = *hl;
+		//const Hand hand = *hl;
 
-		// Get fingers
+		// Get fingers of first hand
 		const FingerList fingers = hand.fingers();
 
 		//FingerList::const_iterator thumbIter = fingers.begin();
@@ -53,7 +56,7 @@ void SampleListener::updateFrameInfo(const Controller& controller, Vector &index
 		//std::cout << "index end: " << index.stabilizedTipPosition() << std::endl;
 		//std::cout << "thumb end: " << thumb.stabilizedTipPosition() << std::endl;
 
-	}
+	//}
 }
 
 

@@ -4,4 +4,4 @@
 using namespace Leap;
 
 // Prototypes
-char  decideHapticCue(int &step, const int nPoints);
+char  decideHapticCue(int &step);
