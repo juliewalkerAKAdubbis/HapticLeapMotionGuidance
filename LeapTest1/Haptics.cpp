@@ -22,13 +22,14 @@ char figure8cues(int &step) {
 }
 
 
-char decideHapticCue(Leap::Vector target, Leap::Vector currentPos, float *handOffset, float *basicOffset) {
+char decideHapticCue(float* target, Leap::Vector currentPos, float *handOffset, float *basicOffset, bool &targetReached) {
 
 	double errorX = (currentPos[0] + handOffset[0]) - (target[0] - basicOffset[0]);
 	double errorY = (currentPos[1] + handOffset[1]) - (target[1] - basicOffset[1]);
+	float threshold = .5;
 
-	if (abs(errorX) > .1 || abs(errorY) > 0.1) {
-		fprintf(stderr, "Error    %f     %f \n", errorX, errorY);
+	if ( abs(errorX) > threshold || abs(errorY) > threshold) {
+		fprintf(stderr, "Displacement    %f     %f ", errorX, errorY);
 
 		if (abs(errorX) > abs(errorY)) {		// if X error is greater than Y error
 			if (errorX > 0) {		
@@ -49,4 +50,9 @@ char decideHapticCue(Leap::Vector target, Leap::Vector currentPos, float *handOf
 		}
 
 	}
+	else {
+		//targetReached = true;
+		return 'k';									// center if error is small
+	}
+
 }

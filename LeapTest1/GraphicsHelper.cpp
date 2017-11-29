@@ -124,7 +124,7 @@ void drawFigure8(int step) {
 
 }
 
-void drawTarget(Leap::Vector target, float* basicOffset) {
+void drawTarget(float* target, float* basicOffset) {
 
 
 	glLoadIdentity();
