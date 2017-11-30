@@ -30,16 +30,31 @@ void SampleListener::onExit(const Controller& controller) {
 
 void SampleListener::updateFrameInfo(const Controller& controller, Vector &indexPos, Vector &thumbPos, Vector &centerPos) {
 	const Frame frame = controller.frame();
-	HandList hands = frame.hands();
-	Leap::Hand hand = hands[0];
+	static bool firstFrame = true;
+	Frame firstHand;
+	Leap::Hand hand; 
+	HandList hands;
+
+	if (firstFrame){
+		firstHand = controller.frame();
+		firstFrame = false;
+	}
+	else{
+	hands = frame.hands();
+	hand = hands[0];
 
 	//for (HandList::const_iterator hl = hands.begin(); hl != hands.end(); ++hl) {
 		// Get the first hand
 		//const Hand hand = *hl;
 
+		
+		//Get rotation matrix of first hand
+	Leap::Matrix handRotationTransform = hand.rotationMatrix(firstHand);
+	//Matrix handRotationMatrix = handRotationTransform.toMatrix3x3();
+
 		// Get fingers of first hand
 		const FingerList fingers = hand.fingers();
-
+		
 		//FingerList::const_iterator thumbIter = fingers.begin();
 		Finger thumb = fingers[0];
 		Finger index = fingers[1];
@@ -56,7 +71,7 @@ void SampleListener::updateFrameInfo(const Controller& controller, Vector &index
 		//std::cout << "index end: " << index.stabilizedTipPosition() << std::endl;
 		//std::cout << "thumb end: " << thumb.stabilizedTipPosition() << std::endl;
 
-	//}
+	}
 }
 
 

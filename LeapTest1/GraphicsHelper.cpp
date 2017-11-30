@@ -68,6 +68,10 @@ void drawFloor(void) {
 
 void drawFingers(int scaleFactor, float* handOffset, Leap::Vector indexPos, Leap::Vector thumbPos, Leap::Vector centerPos) {
 
+	GLfloat white[] = { 0.8f, 0.8f, 0.8f, 1.0f };
+	GLfloat shininess[] = { 50 };
+
+
 	// Draw fingers
 	glLoadIdentity();
 	glTranslatef(handOffset[0], handOffset[1], handOffset[2]);
@@ -79,18 +83,29 @@ void drawFingers(int scaleFactor, float* handOffset, Leap::Vector indexPos, Leap
 
 	// Draw end points
 	glLoadIdentity();
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, white);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, white);
+	glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
 	glTranslatef(handOffset[0], handOffset[1], handOffset[2]);
 	glTranslatef(centerPos[0] / scaleFactor, centerPos[1] / scaleFactor, centerPos[2] / scaleFactor);
 	glutSolidSphere(0.25f, 10, 10);
 
 	glLoadIdentity();
-	glColor3f(0.0f, 0.0f, 1.0f);
+	//glColor3f(0.0f, 0.0f, 1.0f);
+	GLfloat green[] = { 0.0f, 0.0f, 1.0f, 1.0f };
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, green);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, white);
+	glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
 	glTranslatef(handOffset[0], handOffset[1], handOffset[2]);
 	glTranslatef(indexPos[0] / scaleFactor, indexPos[1] / scaleFactor, indexPos[2] / scaleFactor);
 	glutSolidSphere(0.15f, 8, 8);
 
 	glLoadIdentity();
-	glColor3f(0.0f, 1.0f, 0.0f);
+	//glColor3f(0.0f, 1.0f, 0.0f);
+	GLfloat blue[] = { 0.0f, 1.0f, 0.0f, 1.0f };
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, blue);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, white);
+	glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
 	glTranslatef(handOffset[0], handOffset[1], handOffset[2]);
 	glTranslatef(thumbPos[0] / scaleFactor, thumbPos[1] / scaleFactor, thumbPos[2] / scaleFactor);
 	glutSolidSphere(0.15f, 8, 8);
@@ -101,9 +116,10 @@ void drawFingers(int scaleFactor, float* handOffset, Leap::Vector indexPos, Leap
 
 void drawFigure8(int step) {
 
-	float basicOffset[3] = { 0.0f, 3.0f, -20.0f };
-	int numPoints = 16;
+	float basicOffset[3] = { 0.0f, 1.0f, -20.0f };
+	int numPoints = 600;
 	float t;
+	glShadeModel(GL_SMOOTH);
 
 	for (int i = 0; i < numPoints; i++) {
 		t = 2 * PI / numPoints * i + PI/2;
@@ -111,21 +127,44 @@ void drawFigure8(int step) {
 		glTranslatef(basicOffset[0], basicOffset[1], basicOffset[2]);
 		glTranslatef(5*cos(t), -3*sin(2*t), 0);
 
-		if (i == step){
-			glColor3f(0.25f, 0.0f, 0.5f);
-		}
-		else {
-			glColor3f(0.0f, 0.25f, 0.5f);
-		}
+		GLfloat white[] = { 0.8f, 0.8f, 0.8f, 1.0f };
+		GLfloat cyan[] = { 0.f, .8f, .8f, 1.f };
+		glMaterialfv(GL_FRONT, GL_DIFFUSE, cyan);
+		glMaterialfv(GL_FRONT, GL_SPECULAR, white);
+		GLfloat shininess[] = { 50 };
+		glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
+		glutSolidSphere(0.1f, 10, 10);
 
-		glutSolidSphere(0.25f, 10, 10);
+	}
+
+}
+
+void drawCurve(void) {
+
+	float basicOffset[3] = { 0.0f, 1.0f, -20.0f };
+	int numPoints = 1000;
+	float t;
+	glShadeModel(GL_SMOOTH);
+
+	for (int i = 0; i < numPoints; i++) {
+		t = 3 * PI / numPoints * i;
+		glLoadIdentity();
+		glTranslatef(basicOffset[0], basicOffset[1], basicOffset[2]);
+		glTranslatef(-2.25*PI+1.5*t, 3 * sin(t), 0);
+
+		GLfloat white[] = { 0.8f, 0.8f, 0.8f, 1.0f };
+		GLfloat cyan[] = { 0.f, .8f, .8f, 1.f };
+		glMaterialfv(GL_FRONT, GL_DIFFUSE, cyan);
+		glMaterialfv(GL_FRONT, GL_SPECULAR, white);
+		GLfloat shininess[] = { 50 };
+		glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
+		glutSolidSphere(0.1f, 10, 10);
 
 	}
 
 }
 
 void drawTarget(float* target, float* basicOffset) {
-
 
 	glLoadIdentity();
 	glTranslatef(basicOffset[0], basicOffset[1], basicOffset[2]);

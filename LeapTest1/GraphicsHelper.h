@@ -12,3 +12,4 @@ void drawFloor(void);
 void drawFingers(int scaleFactor, float* handOffset, Leap::Vector indexPos, Leap::Vector thumbPos, Leap::Vector centerPos);
 void drawFigure8(int step);
 void drawTarget(float* target, float* basicOffset);
+void drawCurve(void);
